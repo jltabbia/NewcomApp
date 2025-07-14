@@ -1,3 +1,29 @@
 <resources>
     <string name="app_name">Newcom App</string>
+
+    <string name="titulo">Estadisticas Newcom</string>
+    <string name="acceso">Acceso</string>
+    <string name="forgot">Olvidó su contraseña?</string>
+    <string name="ingresar">Ingresar</string>
+    <string name="equipos">Equipos</string>
+    <string name="equipo">Equipo</string>
+    <string name="jugadores">Jugadores</string>
+    <string name="jugador">Jugador</string>
+    <string name="partidos">Partidos</string>
+    <string name="partido">Partido</string>
+    <string name="usuario">Usuario</string>
+    <string name="contraseña">Contraseña</string>
+    <string name="ganados">Ganados</string>
+    <string name="jugados">Jugados</string>
+    <string name="perdidos">Perdidos</string>
+    <string name="promedio">Promedio</string>
+    <string name="puntos">Puntos</string>
+    <string name="origen">Origen</string>
+    <string name="fecha">Fecha</string>
+    <string name="nombre">Nombre</string>
+    <string name="apellido">Apellido</string>
+    <string name="edad">Edad</string>
+    <string name="id">ID</string>
+    <string name="documento">Documento</string>
+
 </resources>
