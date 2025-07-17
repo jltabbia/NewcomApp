@@ -12,6 +12,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.CenterAlignedTopAppBar
@@ -34,18 +35,22 @@ import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
-import androidx.compose.ui.text.style.TextDecoration
+import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import ar.com.jtsistemas.newcomapp.R
+import ar.com.jtsistemas.newcomapp.data.login.mvvm.LoginViewModel
 import ar.com.jtsistemas.newcomapp.ui.theme.nunito
 import kotlinx.serialization.Serializable
 
 @Serializable
 object LoginScreen
 
+
+//private val loginviewmodel: LoginViewModel by viewModels { LoginViewModelFactory(emptyList()) }
 @Preview(showBackground = true, showSystemUi = true)
 @Composable
 fun LoginScreen() {
@@ -82,9 +87,12 @@ fun BodyLoginScreen(modifier: Modifier) {
     var usuario: String by remember { mutableStateOf("") }
     var contrasena: String by remember { mutableStateOf("") }
     var verContrasena: Boolean by remember { mutableStateOf(false) }
-    Box(modifier = Modifier
-        .fillMaxSize()
-        .background(colorResource(R.color.background)))
+
+    Box(
+        modifier = Modifier
+            .fillMaxSize()
+            .background(colorResource(R.color.background))
+    )
     Column(
         modifier.fillMaxSize(),
         horizontalAlignment = Alignment.CenterHorizontally,
@@ -104,7 +112,7 @@ fun BodyLoginScreen(modifier: Modifier) {
         )
         Spacer(modifier = Modifier.size(20.dp))
         Image(
-            modifier=Modifier.size(70.dp),
+            modifier = Modifier.size(70.dp),
             painter = painterResource(R.drawable.pelotavolley),
             contentDescription = "Pelota"
         )
@@ -140,26 +148,37 @@ fun BodyLoginScreen(modifier: Modifier) {
                     fontFamily = nunito,
                     fontSize = 18.sp,
 
-                )
+                    )
             },
             leadingIcon = {
                 Icon(painterResource(R.drawable.ic_key), contentDescription = "password")
             },
+            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
             trailingIcon = {
+                //val verimagen =
+
                 IconButton(onClick = { verContrasena = !verContrasena }) {
-                    Icon(
-                        painter = painterResource(R.drawable.ic_visibility),
-                        contentDescription = ""
-                    )
+                    if (verContrasena) {
+                        Icon(painterResource(R.drawable.ic_visibility_off), contentDescription = "")
+
+                    } else {
+                        Icon(painterResource(R.drawable.ic_visibility), contentDescription = "")
+                    }
                 }
             },
-            visualTransformation = PasswordVisualTransformation(),
+            visualTransformation = if (verContrasena) {
+                VisualTransformation.None
+            } else {
+                PasswordVisualTransformation()
+            },
+
             modifier = Modifier.fillMaxWidth()
         )
         Text(
             text = stringResource(R.string.forgot),
             fontSize = 18.sp,
             fontFamily = nunito,
+            fontWeight = FontWeight.Bold,
             color = colorResource(R.color.Azul),
             modifier = Modifier
                 .align(Alignment.End)

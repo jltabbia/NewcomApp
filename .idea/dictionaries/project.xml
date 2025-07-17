@@ -2,6 +2,7 @@
   <dictionary name="project">
     <words>
       <w>acceso</w>
+      <w>activo</w>
       <w>apellido</w>
       <w>bandera</w>
       <w>colores</w>
@@ -9,6 +10,7 @@
       <w>contraseña</w>
       <w>edad</w>
       <w>ingresar</w>
+      <w>loginviewmodel</w>
       <w>nunito</w>
       <w>olvidó</w>
       <w>pantalla</w>
